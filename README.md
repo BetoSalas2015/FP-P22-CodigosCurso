@@ -1,3 +1,4 @@
-# FP-P22-CodigosCurso
+# Fundamentos de Programación - Verano 2022
+# CodigosCurso
 
-Sesiones 21-22 - 22/06/2022
+Sesiones 23-24 - 24/06/2022
