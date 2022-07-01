@@ -9,64 +9,138 @@
 // Funciones
 int main()
 {
-	int entero;
-	// 0 - false
-	// 1 y todo lo demás - true
-	//  Operador de igualdad (==)   Ej.   2 == 3 => 0
-	printf("2 == 3? => %d\n", (2 == 3) );
-	printf("3 == 3? => %d\n", 3 == 3 );
-	//  Operador de no igualdad (!=)   Ej.   2 != 3 => 1
-	printf("2 != 3? => %d\n", (2 != 3) );
-	printf("3 != 3? => %d\n", 3 != 3 );
-	//  Operador mayor que (>)
-	printf("2 > 3? => %d\n", (2 > 3) );
-	//  Operador mayor o igual que ( >= )
-	printf("3 >= 3? => %d\n", 3 <= 3 );
-	//  Operador menor que (<)
-	printf("2 < 3? => %d\n", (2 < 3) );
-	//  Operador menor o igual que ( <= )
-	printf("3 <= 3? => %d\n", 3 <= 3 );
+	int calif;
+	int i;				//  Controladora
+	i = 1;				// inicialización de la controladora (sentinela)
+	(i <= 10);			// condición (evaluación lógica) de la controladora verdadera >>>  repito
+	printf("%d\n", i);	// Setencia o Bloque de sentencias a repetir
+	i = i + 1;			// Incremento o decremento de la controladora
 
-	// Operadores Lógicos
-	//  Operador y lógico AND ( && )
-	printf("Tabla de Verdad del y (AND)\n");
-	printf("\ta\tb\t(a && b)\n");
-	printf("\t0\t0\t   %d\n", 0 && 0);
-	printf("\t0\t1\t   %d\n", 0 && 1);
-	printf("\t1\t0\t   %d\n", 1 && 0);
-	printf("\t1\t1\t   %d\n", 1 && 1);
-
-	//  Operador y lógico OR ( || )
-	printf("\nTabla de Verdad del O (OR)\n");
-	printf("\ta\tb\t(a || b)\n");
-	printf("\t0\t0\t   %d\n", 0 || 0);
-	printf("\t0\t1\t   %d\n", 0 || 1);
-	printf("\t1\t0\t   %d\n", 1 || 0);
-	printf("\t1\t1\t   %d\n", 1 || 1);
-
-	//  Operador negación lógica NOT ( ! )
-	printf("Tabla de Verdad de la negación (AND)\n");
-	printf("\ta\t   (!a)\n");
-	printf("\t0\t   %d\n", !0);
-	printf("\t1\t   %d\n", !1);
-
-	printf("\n\n-------Condicional Simple------------\n");
-	printf("DAme un numero: ");
-	scanf("%d", &entero);
-	if(entero > 2)
+	//  Repetitiva pre-condición
+	cls;
+	printf("-----Repetitiva precondición---------------\n");
+	i = 1;	
+	while (i <= 10) 
 	{
-		printf(" Es mayor que dos\n");
+		printf("%d\n", i);		// Sentencia se ejecuta 0 o más veces
+		i = i + 1;
+	}
+	pausa;
+	printf("-----Repetitiva postcondición---------------\n");
+	i = 1;
+	do {
+		printf("%d\n", i);		// Sentencia se ejecuta 1 o más veces
+		i = i + 1;
+	} while (i <= 10);
+	pausa;
+	printf("-----Repetitiva precondición---------------\n");
+	for(i = 1; i <= 10; i = i + 1)
+	{
+		printf("%d\n", i);
 	}
 
-	printf("\n---------Condicional Completa----------\n");
-	if(entero < 3)
+	// Estructura Selectiva (switch)
+	printf("Dame la calificación numerica: ");
+	scanf("%d", &calif);
+	
+	if(calif == 10) printf("LA calificación es A\n");
+	if(calif == 9) printf("LA calificación es B\n");
+	if(calif == 8) printf("LA calificación es C\n");
+	if(calif == 7) printf("LA calificación es D\n");
+	if(calif == 6) printf("LA calificación es E\n");
+	if(calif <= 5 && calif >= 0) printf("LA calificación es F\n");
+
+	pausa;
+	printf("-----Estructura Selectiva---------------\n");
+
+	// switch( valor integral )
+	// {
+	//		case valor1: sentencia;
+	//		case valor2: sentencia;
+	//		case valor3: sentencia;
+	//		case valor4: sentencia;
+	// }
+	switch (calif)
 	{
-		printf(" Es menor que tres\n");
+		case 10: {  printf("LA calificación es A\n"); break ;}
+		case 9:  printf("LA calificación esB\n"); break;
+		case 8:  printf("LA calificación es C\n"); break;
+		case 7:  printf("LA calificación es D\n"); break;
+		case 6:		{
+						printf("LA calificación es E\n"); break;
+					}
+		case 5: case 4: 
+		case 3: case 2: 
+		case 1: case 0:  printf("LA calificación es F\n"); break;
+		default: printf("Calificacion no válida!\n");
 	}
-	else
+
+	//  break y continue
+	//  break =>  te saca de la estructura de control (salida incondicional)
+	//  continue => te obliga a regresar a evaluar la condición (salto condicional)
+
+	pausa;
+	printf("-----Break---------------\n");
+	for(i = 1; i <= 10; i = i + 1)
 	{
-		printf("No es menor que tres\n");
+		if( i % 5 == 0)
+			break;
+		printf("%d\n", i);
 	}
+		pausa;
+	printf("-----continue---------------\n");
+	for(i = 1; i <= 10; i = i + 1)
+	{
+		if( !(i % 5) )
+			continue;
+		printf("%d\n", i);
+	}
+
+	//  Operadores incremento (++) y decremento (--)
+	//  Operador incremento (++) le suma 1 a su operando
+	//  Operador decremento (--) le resta 1 a su operando
+	pausa;
+	printf("-----incremento---------------\n");
+	for(i = 1; i <= 10; i++)
+	{
+		printf("%d\n", i);
+	}
+
+	pausa;
+	printf("-----decremento---------------\n");
+	for(i = 10; i >= 0; i--)
+	{
+		printf("%d\n", i);
+	}
+
+	// incremento/decremento postfijo y/o prefijo
+	// Prefija
+	++i;				// Incremento solito es indiferente
+	// postfija
+	i++;				// Incremento solito es indiferente
+
+	i = 10;
+	printf("Postfijo: i = %d\n", i++);		//	Primero usas y despues incrementas
+	printf("i = %d\n", i);
+	i = 10;
+	printf("Prefijo: i = %d\n", ++i);		// Primero incrementas y despues usas
+	printf("i = %d\n", i);
+
+	// Asignacion simple ( = )
+	i = i + 1;
+
+	// Asignación Compuesta ( +=, -=, *=, /=, %= ) 
+	i += 1;
+
+	//  Maneras de sumar 1
+	i = i + 1;
+	i += 1;
+	i++;
+
+	//  Maneras de sumar 2
+	i = i + 2;
+	i += 2;
+
 	pausa;
 	cls;
 }
