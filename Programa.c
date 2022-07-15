@@ -1,54 +1,71 @@
 /* Otri programa en C  del Curso*/
 // LA criba de Eratóstenes
 #include <stdio.h>			//  Para para usar printf(), scanf(), fflush(),gets()
-#include <stdlib.h>			//  Para usar system(), rand() y srand()
-#include <math.h>			//  Para usar pow(base, exp) y sqrt(numero)
-#include <time.h>			//  Para usar time()
+#include <stdlib.h>			//  Para usar system(), rand() y srand
+#include <string.h>			//  Para usar las rutinas de cadenas
 
 #define pausa system("pause")
 #define cls system("cls")
 
-#define SIZE 150000
+#define SIZE 80
 
 // Funciones
 int main()
 {
-	int criba[SIZE];
-	int i, j, tempo;
+	char cadena[SIZE];
+	char cadena2[SIZE];
+	int i = 0;
+	char *cad;
+	//printf("Dame una cadena: ");
+	//gets(cadena);
+	///*printf("Dame otra cadena: ");
+	//gets(cadena2);*/
+	////  strcpy()  Copia cadenas
+	//strcpy(cadena2, cadena);
 
-	srand( time(0) );				// DEfinimos la semilla de numeros aleaorios
+	//puts(cadena2);
 
-	//  Inicializar a 1 los elementos del arreglo
-	for(i = 0; i < SIZE; i++)
-		criba[i] = rand() % 500;
+	////  strlen()  te dice el tamaño de la cadena
+	//i = strlen(cadena);
+	//printf("El tamaño de la cadena es: %d\n", i );
+	//printf("El tamaño de la cadena2 es: %d\n", strlen(cadena2) );
 
-	//   Imprimir los numeros desordenados
+	////  strcmp()   Compara cadenas
+	//if( strcmp(cadena, cadena2) == 0 )
+	//	puts("Las cadenas son iguales ");
+	//if( strcmp(cadena, "Martinez") < 0)
+	//	puts("La cadena uno es mas pequeña");
+	//if( strcmp(cadena, "Martinez") > 0)
+	//	puts("La cadena uno es mas grande");
+	//
+	//// strcat() concatena cadena 
+	//strcpy(cadena2, "Tu apellido es: ");
+	//puts( strcat(cadena2, cadena) );
+	//puts(cadena);
+	//puts(cadena2);
 
-	/*for(i = 0; i < SIZE; i++)
-			printf("%d, ", criba[i]);
-	printf("\n\n");*/
+	////  strtok() rompe una cadena en tokens ( sub cadenas )
+	//printf("Dame tu nombre: ");
+	//gets(cadena);						//  "Roberto Salazar Márquez"
 
-	//  Proceso de la ordenamiento de Burbuja
-	for(i = 0; i < SIZE; i++)				//  Por cada índice del arreglo...
+	//puts( strtok(cadena, " ") );		//  imprime "Roberto"
+	//puts( strtok(NULL, " ") );			//  imprime "Salazar"
+	//puts( strtok(NULL, " ") );			//  imprime "Marquez"
+	//puts( strtok(NULL, " ") );			//   Error la cadena se acabó (regresó NULL)
+
+	printf("Dame tu nombre otra vez: ");
+	gets(cadena);						//  "Roberto Salazar Márquez"
+	cad = strtok(cadena, " ");
+	while( cad != NULL)
 	{
-		for(j = i + 1; j < SIZE ; j++)			// ... recorro los siguientes.
-		{
-			if(criba[i] >= criba[j])	//  El numero guardado en i es menor al guardado en j?
-			{
-				tempo = criba[i];		//  ... Los intercambio
-				criba[i] = criba[j];
-				criba[j] = tempo;
-			}
-		}
+		puts( cad );
+		cad = strtok(NULL, " ");
 	}
-
-	//   Imprimir los numeros ordenados
-	/*for(i = 0; i < SIZE; i++)
-			printf("%d, ", criba[i]);
-	printf("\n");*/
-
+	
 	pausa;
 	cls;
 }
+
+
 
 
