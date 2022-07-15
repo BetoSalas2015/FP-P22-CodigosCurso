@@ -13,54 +13,39 @@
 int main()
 {
 	char cadena[SIZE];
-	char cadena2[SIZE];
-	int i = 0;
-	char *cad;
-	//printf("Dame una cadena: ");
-	//gets(cadena);
-	///*printf("Dame otra cadena: ");
-	//gets(cadena2);*/
-	////  strcpy()  Copia cadenas
-	//strcpy(cadena2, cadena);
+	int i, j;
 
-	//puts(cadena2);
+	printf("Dame una cadena a analizar: ");
+	gets(cadena);
 
-	////  strlen()  te dice el tamaño de la cadena
-	//i = strlen(cadena);
-	//printf("El tamaño de la cadena es: %d\n", i );
-	//printf("El tamaño de la cadena2 es: %d\n", strlen(cadena2) );
-
-	////  strcmp()   Compara cadenas
-	//if( strcmp(cadena, cadena2) == 0 )
-	//	puts("Las cadenas son iguales ");
-	//if( strcmp(cadena, "Martinez") < 0)
-	//	puts("La cadena uno es mas pequeña");
-	//if( strcmp(cadena, "Martinez") > 0)
-	//	puts("La cadena uno es mas grande");
-	//
-	//// strcat() concatena cadena 
-	//strcpy(cadena2, "Tu apellido es: ");
-	//puts( strcat(cadena2, cadena) );
-	//puts(cadena);
-	//puts(cadena2);
-
-	////  strtok() rompe una cadena en tokens ( sub cadenas )
-	//printf("Dame tu nombre: ");
-	//gets(cadena);						//  "Roberto Salazar Márquez"
-
-	//puts( strtok(cadena, " ") );		//  imprime "Roberto"
-	//puts( strtok(NULL, " ") );			//  imprime "Salazar"
-	//puts( strtok(NULL, " ") );			//  imprime "Marquez"
-	//puts( strtok(NULL, " ") );			//   Error la cadena se acabó (regresó NULL)
-
-	printf("Dame tu nombre otra vez: ");
-	gets(cadena);						//  "Roberto Salazar Márquez"
-	cad = strtok(cadena, " ");
-	while( cad != NULL)
+	i = 0;
+	while(cadena[i] != '\0')
 	{
-		puts( cad );
-		cad = strtok(NULL, " ");
+		if(cadena[i] >= 'a' && cadena[i] <= 'z')		// si es una letra minuscula
+			cadena[i] -= 32;
+		i++;
 	}
+
+	j = i - 1;				// nos posicionamos al final de la cadena
+	i = 0;					//  y al principio de la misma
+
+	while(i <= j)
+	{
+		if(cadena[i] == ' ')
+			i++;
+		if(cadena[j] == ' ')
+			j--;
+		if(cadena[i] != cadena[j])
+		{
+			printf("La cadena no es palindroma\n");
+			pausa;
+			exit(0);
+		}
+		i++;
+		j--;
+	}
+	puts("LA cadena fue palindroma");
+	
 	
 	pausa;
 	cls;
