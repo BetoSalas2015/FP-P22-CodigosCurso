@@ -4,29 +4,37 @@
 
 #define pausa system("pause")
 #define cls system("cls")
-#define delay system("timeout 10")
-//  Prototipos
-int square(int num);
+
+FILE *lectura, *escritura;
 
 // Funciones
-//  Definición (Declaración) de Funcion  
-
 
 void main()
 {
-	int x, res;
-	delay;
-	system("chcp 850");
-	printf("Dame un número:");
-	scanf("%d", &x);
-	res = square(x);
-	// Invocación de una función
-	printf("El resultado de elevar %d al cuadrado es: %d\n", x, res );
+	char cadena[80];
+	lectura = fopen("Programa.c","r");		//  Abrimos el flujo de datos como de lectura
+	if( lectura == NULL)		// hubo un problema, el archivo no se creó
+	{
+		printf("ERROR: El archivo no existe en el directorio. ");
+		pausa;
+		return 1;
+	}
+	escritura = fopen("Copia de Programa.c","w");		//  Abrimos el flujo de datos como de lectura
+	if( escritura == NULL)		// hubo un problema, el archivo no se creó
+	{
+		printf("ERROR: El archivo no existe en el directorio. ");
+		pausa;
+		return 1;
+	}
+
+	while( !feof(lectura) )
+	{
+		fgets(cadena,80,lectura);
+		printf(cadena);
+		fputs(cadena,escritura);
+	}
+	fclose(lectura);			//  Cerramos el flujo de datos
+	fclose(escritura);
 	pausa;
 	cls;
-}
-
-int square(int num) 
-{
-	return (num * num); 
 }
